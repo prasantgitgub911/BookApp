@@ -56,11 +56,4 @@
             </plugin>
         </plugins>
     </build>
-	<distributionManagement>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>a0qvebkqpml4i-artifactory-primary-0-snapshots</name>
-        <url>https://upgradeyourskills.jfrog.io/artifactory/libs-snapshot</url>
-    </snapshotRepository>
-    </distributionManagement>
 </project>
