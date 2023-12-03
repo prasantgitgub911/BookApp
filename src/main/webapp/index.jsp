@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="LoginBox" style="height: max-content;">
-    <div class="title">Upgrade Your Skills Login</div>
+    <div class="title">DevOps Makes Life Easy Login</div>
     <form method="post" action="Login">
         <div class="User-details">
             <div class="input-box">
