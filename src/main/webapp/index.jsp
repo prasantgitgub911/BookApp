@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="LoginBox" style="height: max-content;">
-    <div class="title">ARTI MEANS AWESOME</div>
+    <div class="title">STUDY READY GO..............</div>
     <form method="post" action="Login">
         <div class="User-details">
             <div class="input-box">
