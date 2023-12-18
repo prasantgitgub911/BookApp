@@ -1,0 +1,21 @@
+pipeline{
+  agent { node { label 'masternode' } } 
+
+  stages{
+
+    stage('Download'){
+     steps{
+       withCredentials([usernamePassword(credentialsId: 'cac8032c-790e-4cfb-ad4a-b4d60465803e', passwordVariable: 'ArtiPass', usernameVariable: 'ArtiUser')]) {
+       bat 'curl -LO -u "%ArtiUser%:%ArtiPass%" -vvv -k -XGET https://upgradeyourskills1.jfrog.io/artifactory/upgrade_maven_local/com/BookApp/BookApp/1.0-SNAPSHOT/BookApp-1.0-20231217.141919-5.war'
+
+       }
+    }
+
+  }
+  stage('Deploy') {
+            steps {
+                deploy adapters: [tomcat9(credentialsId: '25d48f33-bebd-453e-ac3b-754a7a89ac6a', path: '', url: 'http://localhost:9090')], contextPath: 'BookApp', war: '**/*.war'
+            }
+        }
+}
+}
