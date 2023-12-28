@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="LoginBox" style="height: max-content;">
-    <div class="title">STUDY READY GO..............</div>
+    <div class="title">AZURE DEVOPS ..............</div>
     <form method="post" action="Login">
         <div class="User-details">
             <div class="input-box">
