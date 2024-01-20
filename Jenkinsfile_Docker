@@ -1,0 +1,47 @@
+pipeline{
+  agent { node { label 'awsnode' } } 
+  tools {
+      git 'git'
+      maven 'Maven'
+      jdk 'AWSJDK17'
+  }
+  environment {
+    IMAGE_TAG = "${env.BUILD_NUMBER}"
+    myDockerRepoName = "bookapp"
+    myDockerhub = "mohanraj123"
+  }
+
+  stages{
+    stage('SCM Checkout'){
+     steps{
+          git 'https://github.com/mohansgithub/BookApp.git'
+          }
+  }
+
+    stage('Maven packing'){
+     steps{
+           sh label: '', script: 'mvn clean install'
+        }
+    }
+	stage('Build & Deploy New Image'){
+     steps{
+        withCredentials([usernamePassword(credentialsId: '7ab64707-d6b7-4f18-8c12-dc75c4042f3d', passwordVariable: 'DockerPassword', usernameVariable: 'DockerUsername')]) {
+        script {
+          sh '''
+           sudo docker login -u ${DockerUsername} -p ${DockerPassword} docker.io
+           sudo docker build -t docker.io/${myDockerhub}/${myDockerRepoName}:${IMAGE_TAG} .
+           sudo docker push docker.io/${myDockerhub}/${myDockerRepoName}:${IMAGE_TAG} 
+		   sudo docker images
+           sudo docker ps -f name=${myDockerRepoName} -q | xargs --no-run-if-empty sudo docker container stop
+           sudo docker container ls -a -fname=${myDockerRepoName} -q | xargs -r sudo docker container rm
+           sudo docker system prune -f
+           sudo docker run -d -p 8080:8080 --name ${myDockerRepoName} ${myDockerhub}/${myDockerRepoName}:${IMAGE_TAG}
+           '''
+        }
+       }
+	}
+  }
+  
+}
+
+}
