@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="LoginBox" style="height: max-content;">
-    <div class="title"> When We are WE we will WIN in 2024 </div>
+    <div class="title"> Docker is TOPPER </div>
     <form method="post" action="Login">
         <div class="User-details">
             <div class="input-box">
