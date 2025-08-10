@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="LoginBox" style="height: max-content;">
-    <div class="title"> Balaji is in Tirupathi </div>
+    <div class="title"> Balaji is in Chennai and Naveen is in Udumalai </div>
     <form method="post" action="Login">
         <div class="User-details">
             <div class="input-box">
