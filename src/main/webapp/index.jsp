@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="LoginBox" style="height: max-content;">
-    <div class="title"> Rohit Amiya Balaji Mohanraj Sathish Naveen Prashanth........Rahul </div>
+    <div class="title"> Docker BookApp Login </div>
     <form method="post" action="Login">
         <div class="User-details">
             <div class="input-box">
